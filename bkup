@@ -1,0 +1,42 @@
+#!/bin/sh
+
+usage() {
+  cat <<_EOT_
+Usage:
+  $0 [-f] [-h]
+
+Description:
+  create buckup file
+
+Options:
+  -f    set format
+  -h    print help
+_EOT_
+  exit 1
+}
+
+GREEN="$(tput setaf 2)"
+BOLD="$(tput bold)"
+RESET="$(tput sgr0)"
+
+format='%Y%m%d%H%M%S'
+
+while getopts :fh OPT
+do
+  case $OPT in
+    f)  format=$OPTARG
+      ;;
+    h)  usage
+      ;;
+  esac
+done
+
+if [ $# -ne 1 ]; then
+  usage
+  exit 1
+fi
+
+target=$1
+backup=${target}_`date +${format}`
+cp ${target} ${backup}
+echo "${BOLD}${GREEN}created${RESET} ${backup}"

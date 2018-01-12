@@ -1,0 +1,55 @@
+#!/bin/sh
+
+usage() {
+  cat <<_EOT_
+Usage:
+  $0 [-d] [-m] [-t] [-h]
+
+Description:
+  print %Y%m%d or create some format file named %Y%m%d
+
+Options:
+  -d    make %Y%m%d directory
+  -m    make %Y%m%d markdown file
+  -t    make %Y%m%d txt file
+  -h    print help
+_EOT_
+  exit 1
+}
+
+mk_ymd_dir() {
+  name=`date +'%Y%m%d'`
+  mkdir ${name}
+  echo "created ${name}"
+  exit 1
+}
+
+mk_ymd_md() {
+  name=`date +'%Y%m%d'`.md
+  touch ${name}
+  echo "created ${name}"
+  exit 1
+}
+
+mk_ymd_txt() {
+  name=`date +'%Y%m%d'`.txt
+  touch ${name}
+  echo "created ${name}"
+  exit 1
+}
+
+while getopts :dmth OPT
+do
+  case $OPT in
+    d)  mk_ymd_dir
+      ;;
+    m)  mk_ymd_md
+      ;;
+    t)  mk_ymd_txt
+      ;;
+    h)  usage
+      ;;
+  esac
+done
+
+date +'%Y%m%d'
