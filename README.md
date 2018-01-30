@@ -5,6 +5,7 @@ my bash command
 
 - ymd
 - bkup
+- sshconfp
 
 ## ymd
 
@@ -35,3 +36,29 @@ bkup [-h]
 ### TODO
 
 - [ ] set backup format
+
+### sshconfp
+
+print ssh config file
+
+### Usage
+
+```
+$ sshconfp
+     1	Host *
+     2	  UseKeychain yes
+     3
+     4	Include */config
+     1	Host aount1.github
+     2	    HostName        github.com
+     3	    IdentityFile    ~/.ssh/github/aount1.github
+     4	    IdentitiesOnly  yes
+     5	Host aount2.github
+     6	  User git
+     7	  Port 22
+     8	  HostName bitbucket.org
+     9	  IdentityFile ~/.ssh/github/aount2.github
+    10	  TCPKeepAlive yes
+    11	  IdentitiesOnly yes
+    12
+```
