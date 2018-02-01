@@ -14,11 +14,12 @@ print `%Y%m%d` or create some format file named `%Y%m%d`
 ### Usage
 
 ```
-ymd [-d] [-m] [-t] [-h]
--d    make %Y%m%d directory
--m    make %Y%m%d markdown file
--t    make %Y%m%d txt file
--h    print help
+ymd [-f] [-d] [-m] [-t] [-h]
+-f [h, m, s]  setting print time format
+-d            make %Y%m%d directory
+-m            make %Y%m%d markdown file
+-t            make %Y%m%d txt file
+-h            print help
 ```
 
 ## bkup

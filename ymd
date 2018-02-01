@@ -3,53 +3,61 @@
 usage() {
   cat <<_EOT_
 Usage:
-  $0 [-d] [-m] [-t] [-h]
+  $0 [-f] [-d] [-m] [-t] [-h]
 
 Description:
   print %Y%m%d or create some format file named %Y%m%d
 
 Options:
-  -d    make %Y%m%d directory
-  -m    make %Y%m%d markdown file
-  -t    make %Y%m%d txt file
-  -h    print help
+  -f [h, m, s]  setting print time format
+  -d            make %Y%m%d directory
+  -m            make %Y%m%d markdown file
+  -t            make %Y%m%d txt file
+  -h            print help
 _EOT_
-  exit 1
+  exit 0
 }
+
+err() { 1>&2 echo "$0: error $@"; return 1; }
 
 mk_ymd_dir() {
   name=`date +'%Y%m%d'`
   mkdir ${name}
   echo "created ${name}"
-  exit 1
+  exit 0
 }
 
 mk_ymd_md() {
   name=`date +'%Y%m%d'`.md
   touch ${name}
   echo "created ${name}"
-  exit 1
+  exit 0
 }
 
 mk_ymd_txt() {
   name=`date +'%Y%m%d'`.txt
   touch ${name}
   echo "created ${name}"
-  exit 1
+  exit 0
 }
 
-while getopts :dmth OPT
-do
+while getopts :f:dmth: OPT; do
   case $OPT in
-    d)  mk_ymd_dir
-      ;;
-    m)  mk_ymd_md
-      ;;
-    t)  mk_ymd_txt
-      ;;
-    h)  usage
-      ;;
+    f)  TIME_FORMAT_TYPE=$OPTARG; TIME_FORMAT_FLAG=1;;
+    d)  mk_ymd_dir;;
+    m)  mk_ymd_md;;
+    t)  mk_ymd_txt;;
+    h)  usage;;
+    \?) err "Invalid option: -$OPTARG" || exit 1 ;;
   esac
 done
+shift $((OPTIND-1))
 
+# Print only
+case $TIME_FORMAT_TYPE in
+  h)  date +'%Y%m%d%H'; exit 0 ;;
+  m)  date +'%Y%m%d%H%M'; exit 0 ;;
+  s)  date +'%Y%m%d%H%M%S'; exit 0 ;;
+  \?) err "Invalid format: $TIME_FORMAT_TYPE" || exit 1 ;;
+esac
 date +'%Y%m%d'
