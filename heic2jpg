@@ -1,20 +1,5 @@
 #!/bin/bash
 
-usage() {
-  cat <<_EOT_
-Usage:
-  $0 [-r]
-
-Description:
-  convert heic to jpg
-
-Options:
-  -r						recursively convert from the current directory
-  -h            print help
-_EOT_
-  exit 0
-}
-
 outputName=out.jpg
 recursivelyDir=.
 
@@ -24,7 +9,8 @@ RESET="$(tput sgr0)"
 recursively() {
   for file in `find ${recursivelyDir} -name '*.heic'`; do
       heic="${file}"
-      out=$(dirname ${file})/${outputName}
+      dir=$(dirname ${file})
+      out=${dir}/${outputName}
       result=`sips --setProperty format jpeg ${heic} --out ${out}`
       echo ${GREEN}${result}${RESET}
   done
