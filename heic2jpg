@@ -1,13 +1,13 @@
 #!/bin/bash
 
 outputName=out.jpg
-recursivelyDir=.
+targetDir=.
 
 GREEN="$(tput setaf 2)"
 RESET="$(tput sgr0)"
 
 recursively() {
-  for file in `find ${recursivelyDir} -name '*.heic'`; do
+  for file in `find ${targetDir} -name '*.heic'`; do
       heic="${file}"
       dir=$(dirname ${file})
       out=${dir}/${outputName}
