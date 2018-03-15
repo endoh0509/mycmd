@@ -6,6 +6,7 @@ my bash command
 - ymd
 - bkup
 - sshconfp
+- heic2jpg
 
 ## ymd
 
@@ -38,7 +39,7 @@ bkup [-h]
 
 - [ ] set backup format
 
-### sshconfp
+## sshconfp
 
 print ssh config file
 
@@ -62,4 +63,15 @@ $ sshconfp
     10	  TCPKeepAlive yes
     11	  IdentitiesOnly yes
     12
+```
+
+## heic2jpg
+
+convert heic to jpg for recursion
+
+### Usage
+
+```bash
+cd TARGET_DIR
+heic2jpg
 ```
