@@ -17,6 +17,8 @@ Make symbolic link.
 ./liall
 ```
 
+---
+
 ## ymd
 
 print `%Y%m%d` or create some format file named `%Y%m%d`
@@ -31,6 +33,8 @@ ymd [-f] [-d] [-m] [-t] [-h]
 -t            make %Y%m%d txt file
 -h            print help
 ```
+
+---
 
 ## bkup
 
@@ -47,6 +51,8 @@ bkup [-h]
 ### TODO
 
 - [ ] set backup format
+
+---
 
 ## sshconfp
 
@@ -73,6 +79,8 @@ $ sshconfp
     11	  IdentitiesOnly yes
     12
 ```
+
+---
 
 ## heic2jpg
 
