@@ -3,10 +3,19 @@ my bash command
 
 # List
 
+- liall
 - ymd
 - bkup
 - sshconfp
 - heic2jpg
+
+## liall
+
+Make symbolic link.
+
+```
+./liall
+```
 
 ## ymd
 

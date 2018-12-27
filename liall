@@ -1,0 +1,9 @@
+#!/bin/bash
+
+cmd_path='~/Documents/bin'
+link_path='/usr/local/bin'
+
+sudo ln -s ${cmd_path}/mycmd/ymd ${link_path}/ymd
+sudo ln -s ${cmd_path}/mycmd/heic2jpg ${link_path}/heic2jpg
+sudo ln -s ${cmd_path}/mycmd/sshconfp ${link_path}/sshconfp
+sudo ln -s ${cmd_path}/mycmd/bkup ${link_path}/bkup
